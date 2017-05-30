@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 
 /*
@@ -17,7 +18,13 @@ import java.util.Scanner;
  *
  * @author sebas
  */
-public class main {
+public class main  extends JFrame{
+    public main(){
+//        Pokemon pokemon1= new Pokemon(null);
+//        Pokemon pokemon2=new Pokemon(null);
+        add(new Batalla());
+        pack();
+    }
     public static ArrayList<Pokemon> read() throws FileNotFoundException, IOException{
         BufferedReader br = new BufferedReader(new FileReader("movimientos.txt"));
         ArrayList<Movimiento> Movimientos= new ArrayList<Movimiento>();
@@ -73,6 +80,11 @@ public class main {
         return Pokemones;
     }
     public static void main(String[] args) throws IOException {
+        main frame = new main();
+        frame.setTitle("Pokemon");
+        frame.setSize(900, 735);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ArrayList<Pokemon> Pokemones = read();
         java.util.Scanner a= new java.util.Scanner(System.in);
         boolean again=true;

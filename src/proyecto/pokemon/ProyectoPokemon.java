@@ -85,10 +85,10 @@ public class ProyectoPokemon extends JFrame{
             super.paintComponent(g);
             Image fondo = loadImage("Fondo.png");
             g.drawImage(fondo,j,k,null);
-            Image Char = loadImage("Charizard Espalda.png");
-            g.drawImage(Char, j+0, k+200, rootPane);
-            Image Venu = loadImage("Venusaur.png");
-            g.drawImage(Venu, j+530, k+120, null);
+            Image poke1 = loadImage("Blastoise-Espalda.png");
+            g.drawImage(poke1, j+0, k+220, rootPane);
+            Image poke2 = loadImage("Charizard-Frente.png");
+            g.drawImage(poke2, j+530, k+105, null);
             
             Image barra = loadImage("Barra Combate.png");
             g.drawImage(barra, j, k+530, null);
@@ -110,4 +110,6 @@ public class ProyectoPokemon extends JFrame{
                 return image;
             }
     }
+    
+    
 }

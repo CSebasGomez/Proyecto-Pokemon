@@ -110,6 +110,14 @@ public class Pokemon {
         this.movimientos = movimientos;
     }
     
+    public String getImagenFrente(){
+        return Nombre+"-Frente.png";
+    }
+    
+    public String getImagenEspalda(){
+        return Nombre+"-Espalda.png";
+    }
+    
    
    
 }

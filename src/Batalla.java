@@ -3,24 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.*;
 /**
  *
  * @author sebas
  */
-public class Batalla {
+public class Batalla extends JPanel implements ActionListener{
     int vida1;
     int vida2;
+    int j;
+    int k;
     Pokemon pokemon1;
     Pokemon pokemon2;
-    
+    Timer timer;
     int turno=0;
+    
     public Batalla(Pokemon pokemon1, Pokemon pokemon2) {
         this.pokemon1=pokemon1;
         this.pokemon2=pokemon2;
         this.vida1=vida1;
         this.vida2=vida2;
+        //ArrayList<Pokemon> Pokemones = new ArrayList<>();
     }
+
+    Batalla() {
+        timer = new Timer(25, this);
+        setFocusable(true);
+        timer.start();
+    }
+
+    
     public int calcularDMG(Movimiento move){
         int multiplicador=1;
         String tipo1=pokemon1.getTipo();
@@ -103,4 +120,29 @@ public class Batalla {
             System.out.println(pokemon1.getNombre()+" Ha ganado");
         }
     }
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Image fondo = loadImage("Fondo.png");
+        g.drawImage(fondo, 0, 0, null);
+        //seleccionar primer pokemon
+        Image poke1 = loadImage(pokemon1.getNombre()+"-Espalda.png");  
+        g.drawImage(poke1, j+0, k+220, null);
+        
+        //seleccionar segundo pokemon
+        Image poke2 = loadImage(pokemon2.getNombre()+"-Frente.png");
+        g.drawImage(poke2, j+530, k+105, null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Image loadImage(String imageName) {
+        ImageIcon ii = new ImageIcon(imageName);
+        Image image = ii.getImage();
+        return image;
+    }
+
+    
 }
