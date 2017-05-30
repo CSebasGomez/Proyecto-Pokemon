@@ -85,6 +85,7 @@ public class ProyectoPokemon extends JFrame{
             super.paintComponent(g);
             Image fondo = loadImage("Fondo.png");
             g.drawImage(fondo,j,k,null);
+            
             Image poke1 = loadImage("Blastoise-Espalda.png");
             g.drawImage(poke1, j+0, k+220, rootPane);
             Image poke2 = loadImage("Charizard-Frente.png");

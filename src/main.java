@@ -19,12 +19,6 @@ import javax.swing.JFrame;
  * @author sebas
  */
 public class main  extends JFrame{
-    public main(){
-//        Pokemon pokemon1= new Pokemon(null);
-//        Pokemon pokemon2=new Pokemon(null);
-        add(new Batalla());
-        pack();
-    }
     public static ArrayList<Pokemon> read() throws FileNotFoundException, IOException{
         BufferedReader br = new BufferedReader(new FileReader("movimientos.txt"));
         ArrayList<Movimiento> Movimientos= new ArrayList<Movimiento>();
@@ -80,34 +74,33 @@ public class main  extends JFrame{
         return Pokemones;
     }
     public static void main(String[] args) throws IOException {
-        main frame = new main();
-        frame.setTitle("Pokemon");
-        frame.setSize(900, 735);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       
         ArrayList<Pokemon> Pokemones = read();
-        java.util.Scanner a= new java.util.Scanner(System.in);
-        boolean again=true;
-        while (again){
-        System.out.println("Cual Pokemon desea el jugador 1?");
-        for(int i=0;i<Pokemones.size();i++){
-            System.out.println("("+(i+1)+")"+Pokemones.get(i).getNombre());
-        }
-        int eleccion = a.nextInt();
-        Pokemon pokemon1=Pokemones.get(eleccion-1);
-        System.out.println("Cual Pokemon desea el jugador 2 ?");
-        for(int i=0;i<Pokemones.size();i++){
-            System.out.println("("+(i+1)+")"+Pokemones.get(i).getNombre());
-        }
-        int eleccion2=a.nextInt();
-        Pokemon pokemon2= Pokemones.get(eleccion2-1);
-        Batalla battle= new Batalla(pokemon1,pokemon2);
-        battle.letsPlay();
-        System.out.println("Desea Jugar otra vez ?");
-        int data=a.nextInt();
-           if(data==0){
-               again=false;
-           } 
-        }
+        Seleccion frame = new Seleccion(Pokemones);
+        frame.Pintar();
+//        java.util.Scanner a= new java.util.Scanner(System.in);
+//        boolean again=true;
+//        while (again){
+//        System.out.println("Cual Pokemon desea el jugador 1?");
+//        for(int i=0;i<Pokemones.size();i++){
+//            System.out.println("("+(i+1)+")"+Pokemones.get(i).getNombre());
+//        }
+//        int eleccion = a.nextInt();
+//        Pokemon pokemon1=Pokemones.get(eleccion-1);
+//        System.out.println("Cual Pokemon desea el jugador 2 ?");
+//        for(int i=0;i<Pokemones.size();i++){
+//            System.out.println("("+(i+1)+")"+Pokemones.get(i).getNombre());
+//        }
+//        int eleccion2=a.nextInt();
+//        Pokemon pokemon2= Pokemones.get(eleccion2-1);
+//        Batalla battle= new Batalla(pokemon1,pokemon2);
+//        battle.letsPlay();
+//        System.out.println("Desea Jugar otra vez ?");
+//        int data=a.nextInt();
+//           if(data==0){
+//               again=false;
+//           } 
+//        }
+          
     }
 }
