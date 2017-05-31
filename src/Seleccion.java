@@ -98,8 +98,20 @@ public class Seleccion extends JFrame {
             String imagenpkmn=pokemones.get(i).getImagenFrente();
             Image PokemonImagen= loadImage(imagenpkmn);
             g.drawImage(PokemonImagen, 300, 200, this);
+            
+            
            
             repaint();
+            g.setColor(Color.white);
+            g.drawString("¿Qué pokemon desea escoger?", 350, 150);
+            Image fD=loadImage("FD.png");
+            g.drawImage(fD, 590, 330, null);
+            
+            Image fI = loadImage("FI.png");
+            g.drawImage(fI, 180, 330,null);
+            
+            g.drawString("Presione ENTER para seleccionar el pokemon", 317, 500);
+            
         }
         @Override
         public void actionPerformed(ActionEvent ae) {

@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -37,7 +39,22 @@ public class Batalla extends JFrame {
             bt.setTitle("Pokemon Amethyst- Batalla");
             bt.setSize(900,735);
             bt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            bt.setLayout(null);
+//            JButton jp1 = new JButton("Boton 1");
+//            //jp1.setBounds(10, 10, 1, 5);
+//            bt.add(jp1);
+            //jp1.setBounds(300,300,100,150);
+            
+            //JLabel label = new JLabel("nida");
+//            JButton button = new JButton();
+//            button.setText("fjdls");
+//            bt.add(button);
+            //bt.add(label);
+//            bt.setLayout(new BorderLayout());
+//            JPanel sP = new JPanel(new GridLayout(2,2));
+//            bt.add(sP,BorderLayout.CENTER);
             bt.setVisible(true);
+            
 //            System.out.println("HP de "+pokemon1.getNombre()+" = "+vida1);
 //            System.out.println("HP de "+pokemon2.getNombre()+" = "+vida2);
 //            while((vida1>0)&&(vida2>0)){
@@ -80,16 +97,19 @@ public class Batalla extends JFrame {
         }
     
     
-    public class PanelBatalla extends JPanel implements ActionListener {
+    public class PanelBatalla extends JPanel implements ActionListener, MouseListener {
         Timer timer;
         
         public PanelBatalla(Pokemon pokemon1,Pokemon pokemon2){
+            this.addMouseListener(this);
             timer = new Timer(25,this);
             timer.start();
             addKeyListener(new TAdapter());
             setFocusable(true);
             
         }
+
+        
         private class TAdapter extends KeyAdapter{
             Graphics u;
             @Override
@@ -130,7 +150,21 @@ public class Batalla extends JFrame {
             
             Image barra = loadImagen("Barra Combate.png");
             g.drawImage(barra, 0, 530, null);
+            g.setColor(Color.white);
+            Font fuente=new Font("Dialog", Font.BOLD, 36);
             g.drawString("¿Qué debería hacer "+pokemon1.getNombre()+" ?", 100, 590);
+            
+            g.fillRect(580,560, 100, 50);
+            g.fillRect(700,560, 100, 50);
+            g.fillRect(580,615, 100, 50);
+            g.fillRect(700,615, 100, 50);
+            
+            g.setColor(Color.black);
+            g.drawString(pokemon1.getMovimientos()[0]+".", 605, 590);
+            g.drawString(pokemon1.getMovimientos()[1]+".", 725, 590);
+            g.drawString(pokemon1.getMovimientos()[2]+".", 605, 645);
+            g.drawString(pokemon1.getMovimientos()[3]+".", 725, 645);
+            
 //            while(vida1>0 && vida2>0){
 //               
 //                g.setColor(Color.white);
@@ -166,6 +200,50 @@ public class Batalla extends JFrame {
 //                turno++;
 //            }
             repaint();
+        }
+        
+//        public boolean checkCollisions(){
+//            Rectangle tanque = getBounds();
+//            
+//            if(tanque.intersects(objeto)){
+//                return true;
+//            }
+//            else{
+//                return false;
+//            }
+//        }
+        
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            Rectangle objeto = new Rectangle(580,560, 100, 50);
+            //System.out.println("perf");
+            Point mp =e.getPoint();
+            if(getBounds().contains(objeto)){
+                timer.stop();
+                System.out.println("jdi");
+                System.out.println(e.getPoint());
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            //System.out.println("jdfis");
+            
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
         }
 
         @Override
