@@ -160,10 +160,10 @@ public class Batalla extends JFrame {
             g.fillRect(700,615, 100, 50);
             
             g.setColor(Color.black);
-            g.drawString(pokemon1.getMovimientos()[0]+".", 605, 590);
-            g.drawString(pokemon1.getMovimientos()[1]+".", 725, 590);
-            g.drawString(pokemon1.getMovimientos()[2]+".", 605, 645);
-            g.drawString(pokemon1.getMovimientos()[3]+".", 725, 645);
+            g.drawString(pokemon1.getMovimientos()[0].getNombre()+".", 605, 590);
+            g.drawString(pokemon1.getMovimientos()[1].getNombre()+".", 725, 590);
+            g.drawString(pokemon1.getMovimientos()[2].getNombre()+".", 605, 645);
+            g.drawString(pokemon1.getMovimientos()[3].getNombre()+".", 725, 645);
             
 //            while(vida1>0 && vida2>0){
 //               

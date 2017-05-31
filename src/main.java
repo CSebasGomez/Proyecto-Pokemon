@@ -77,30 +77,6 @@ public class main  extends JFrame{
        
         ArrayList<Pokemon> Pokemones = read();
         Seleccion frame = new Seleccion(Pokemones);
-        frame.Pintar();
-//        java.util.Scanner a= new java.util.Scanner(System.in);
-//        boolean again=true;
-//        while (again){
-//        System.out.println("Cual Pokemon desea el jugador 1?");
-//        for(int i=0;i<Pokemones.size();i++){
-//            System.out.println("("+(i+1)+")"+Pokemones.get(i).getNombre());
-//        }
-//        int eleccion = a.nextInt();
-//        Pokemon pokemon1=Pokemones.get(eleccion-1);
-//        System.out.println("Cual Pokemon desea el jugador 2 ?");
-//        for(int i=0;i<Pokemones.size();i++){
-//            System.out.println("("+(i+1)+")"+Pokemones.get(i).getNombre());
-//        }
-//        int eleccion2=a.nextInt();
-//        Pokemon pokemon2= Pokemones.get(eleccion2-1);
-//        Batalla battle= new Batalla(pokemon1,pokemon2);
-//        battle.letsPlay();
-//        System.out.println("Desea Jugar otra vez ?");
-//        int data=a.nextInt();
-//           if(data==0){
-//               again=false;
-//           } 
-//        }
-          
+        frame.Pintar();          
     }
 }
