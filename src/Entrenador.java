@@ -14,9 +14,35 @@ import java.util.ArrayList;
 public class Entrenador {
     private String nombre;
     private boolean sexo;
+    private String personaje;
     private int wins;
     private int loses;
     private ArrayList<Pokemon> pokemones;
+
+    public Entrenador(String nombre,String personaje, int wins, int loses, ArrayList<Pokemon> pokemones) {
+        this.nombre = nombre;
+        this.wins = wins;
+        this.loses = loses;
+        this.pokemones = pokemones;
+        this.personaje=personaje;
+    }
+
+    public ArrayList<Pokemon> getPokemones() {
+        return pokemones;
+    }
+    
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
+    public String getPersonaje() {
+        return personaje+".png";
+    }
+    
+    
+    
 
     public void showPerfil() {
         System.out.println ( "Entrenador{" + "nombre=" + nombre + ", sexo=" + sexo + ", wins=" + wins + ", loses=" + loses + '}');

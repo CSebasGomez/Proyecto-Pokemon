@@ -24,16 +24,23 @@ import javax.swing.Timer;
  * @author sebas
  */
 public class Seleccion extends JFrame {
-    public ArrayList<Pokemon> pokemones;
+    public ArrayList<Pokemon> pokemones1;
+    public ArrayList<Pokemon> pokemones2;
+    public Entrenador Entrenador1;
+    public Entrenador Entrenador2;
     public ArrayList<Pokemon> seleccionados=new ArrayList();
+    public int seleccion=0;
     
-    public Seleccion(ArrayList<Pokemon> Pokemones){
-        this.pokemones=Pokemones;
-        add(new PanelSeleccion(pokemones));
+    public Seleccion(Entrenador Entrenador1,Entrenador Entrenador2){
+        this.Entrenador1=Entrenador1;
+        this.Entrenador2=Entrenador2;
+        this.pokemones1=Entrenador1.getPokemones();
+        this.pokemones2=Entrenador2.getPokemones();
+        add(new PanelSeleccion(pokemones1,pokemones2));
     }
     
    public void Pintar() {
-        Seleccion frame = new Seleccion(pokemones);
+        Seleccion frame = new Seleccion(Entrenador1,Entrenador2);
         frame.setTitle("Pokemon Amethyst- Seleccion");
         frame.setSize(900,735);
         frame.setLocationRelativeTo(null);
@@ -47,7 +54,7 @@ public class Seleccion extends JFrame {
     int j=0;
     
     
-    public PanelSeleccion(ArrayList<Pokemon> Pokemones){
+    public PanelSeleccion(ArrayList<Pokemon> Pokemones1,ArrayList<Pokemon> Pokemones2){
         timer = new Timer(25, this);
         timer.start();
         addKeyListener(new TAdapter());
@@ -60,32 +67,61 @@ public class Seleccion extends JFrame {
             public void keyPressed(KeyEvent e){
                 int key = e.getKeyCode();
                 if(key == KeyEvent.VK_RIGHT){
-                    if(i<pokemones.size()){
-                        if((i+1)==pokemones.size()){
-                            i=0;
-                        }
-                        else{
-                            i++;
+                    if(seleccion==0){
+                        if(i<pokemones1.size()){
+                            if((i+1)==pokemones1.size()){
+                                i=0;
+                            }
+                            else{
+                                i++;
+                            }
                         }
                     }
-                    
+                    if(seleccion==1){
+                        if(i<pokemones2.size()){
+                            if((j+1)==pokemones2.size()){
+                                j=0;
+                            }
+                            else{
+                                j++;
+                            }
+                        }
+                    }
                 }
                 if(key == KeyEvent.VK_LEFT){
-                    if(i==0){
-                        i=pokemones.size()-1;
+                   if(seleccion==0){
+                        if(i<pokemones1.size()){
+                            if(i==0){
+                                i=pokemones1.size()-1;
+                            }
+                            else{
+                                i--;
+                            }
+                        }
                     }
-                    else{
-                        i--;
+                    if(seleccion==1){
+                        if(j<pokemones2.size()){
+                            if(j==0){
+                                j=pokemones2.size()-1;
+                            }
+                            else{
+                                j--;
+                            }
+                        }
                     }
                 }
                 if(key==KeyEvent.VK_ENTER){
-                    seleccionados.add(pokemones.get(i));
-                    if(seleccionados.size()==2){
-                        
-                        
-                        Batalla batalla= new Batalla(seleccionados.get(0),seleccionados.get(1));
+                    if(seleccion==1){
+                        seleccionados.add(pokemones2.get(j));
+                        Batalla batalla= new Batalla(seleccionados.get(0),seleccionados.get(1),Entrenador1,Entrenador2);
                         batalla.letsPlay();
                     }
+                    if(seleccion==0){
+                        seleccionados.add(pokemones1.get(i));
+                        seleccion++;
+                        i=0;
+                    }
+                    
                 }
             }
         }
@@ -95,23 +131,48 @@ public class Seleccion extends JFrame {
             Image fondoSeleccion = loadImage("FondoSeleccion.jpg");
             g.drawImage(fondoSeleccion,0,0,null);
             
-            String imagenpkmn=pokemones.get(i).getImagenFrente();
-            Image PokemonImagen= loadImage(imagenpkmn);
-            g.drawImage(PokemonImagen, 300, 200, this);
-            
-            
-           
-            repaint();
-            g.setColor(Color.white);
-            g.drawString("¿Qué pokemon desea escoger?", 350, 150);
-            Image fD=loadImage("FD.png");
-            g.drawImage(fD, 590, 330, null);
-            
-            Image fI = loadImage("FI.png");
-            g.drawImage(fI, 180, 330,null);
-            
-            g.drawString("Presione ENTER para seleccionar el pokemon", 317, 500);
-            
+            if(seleccion==0){
+                String imagenpkmn=pokemones1.get(i).getImagenFrente();
+                Image PokemonImagen= loadImage(imagenpkmn);
+                g.drawImage(PokemonImagen, 300, 200, this);
+
+
+
+                repaint();
+                g.setColor(Color.white);
+                g.drawString("¿Qué pokemon desea escoger "+Entrenador1.getNombre()+" ?", 350, 100);
+                Image fD=loadImage("FD.png");
+
+                g.drawString(pokemones1.get(i).getNombre(), 400, 150);
+
+                g.drawImage(fD, 590, 330, null);
+
+                Image fI = loadImage("FI.png");
+                g.drawImage(fI, 180, 330,null);
+
+                g.drawString("Presione ENTER para seleccionar el pokemon que luchara junto a "+Entrenador1.getNombre()+" ?", 317, 500);
+            }
+            else{
+                String imagenpkmn=pokemones2.get(j).getImagenFrente();
+                Image PokemonImagen= loadImage(imagenpkmn);
+                g.drawImage(PokemonImagen, 300, 200, this);
+
+
+
+                repaint();
+                g.setColor(Color.white);
+                g.drawString("¿Qué pokemon desea escoger "+Entrenador2.getNombre()+" ?", 350, 100);
+                Image fD=loadImage("FD.png");
+
+                g.drawString(pokemones2.get(j).getNombre(), 400, 150);
+
+                g.drawImage(fD, 590, 330, null);
+
+                Image fI = loadImage("FI.png");
+                g.drawImage(fI, 180, 330,null);
+
+                g.drawString("Presione ENTER para seleccionar el pokemon que luchara junto a "+Entrenador2.getNombre()+" ?", 317, 500);
+            }
         }
         @Override
         public void actionPerformed(ActionEvent ae) {

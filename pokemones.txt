@@ -1,2 +1,9 @@
-1,Charizard,fuego,serio,52,34,140,Lanzallamas,Terremoto,Placaje,Vuelo
-2,Blastoise,agua,audaz,45,70,200,Terremoto,Bomba agua,Latigo Cepa,Mordisco
+1,Charizard,fuego,serio,52,34,300,Lanzallamas,Terremoto,Placaje,Vuelo
+2,Blastoise,agua,audaz,45,40,450,Terremoto,Bomba agua,Latigo Cepa,Mordisco
+3,Pikachu,electrico,amable,70,22,350,Impactrueno,Golpe cabeza,Placaje,Mordisco
+4,Gyarados,agua,serio,60,25,220,Vuelo,Cascada,Surf,Terremoto
+5,Eevee,normal,fuerte,45,30,210,Mordisco,Golpe cabeza,Placaje,Terremoto
+6,Gengar,normal,afable,78,20,320,Golpe fantasma,Surf,Mordisco,Impactrueno
+7,Venusaur,planta,serio,50,35,450,Hoja afilada,Latigo Cepa,Golpe cabeza,Placaje
+8,Porygon,roca,afable,40,37,210,Golpe cabeza,Terremoto,Impactrueno,Placaje
+9,Abra,normal,serio,70,20,280,Golpe fantasma,Psiquico,Golpe cabeza,Mordisco

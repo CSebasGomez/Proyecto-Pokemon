@@ -1,0 +1,4 @@
+Sergio,Andres,15,19,Charizard,Blastoise,Venusaur
+Sami,Karla,20,12,Eevee,Porygon,Pikachu
+Isa,Isa,28,19,Venusaur,Pikachu,Porygon,Eevee
+Sebas,Sebas,101,3,Gyarados,Gengar,Charizard

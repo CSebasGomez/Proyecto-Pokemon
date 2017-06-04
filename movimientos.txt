@@ -1,7 +1,14 @@
-Bomba agua,80,agua
-Placaje,45,normal
-Latigo Cepa,50,planta
-Lanzallamas,75,fuego
-Terremoto,67,normal
-Vuelo,75,volador
-Mordisco,69,normal
+Bomba agua,30,agua
+Placaje,25,normal
+Latigo Cepa,15,planta
+Lanzallamas,50,fuego
+Terremoto,45,normal
+Vuelo,35,volador
+Mordisco,26,normal
+Surf,40,agua
+Golpe cabeza,30,normal
+Cascada,20,agua
+Hoja afilada,35,planta
+Golpe fantasma,15,normal
+Impactrueno,20,electrico
+Psiquico,35,normal

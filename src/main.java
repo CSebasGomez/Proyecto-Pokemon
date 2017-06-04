@@ -18,7 +18,7 @@ import javax.swing.JFrame;
  *
  * @author sebas
  */
-public class main  extends JFrame{
+public class main{
     public static ArrayList<Pokemon> read() throws FileNotFoundException, IOException{
         BufferedReader br = new BufferedReader(new FileReader("movimientos.txt"));
         ArrayList<Movimiento> Movimientos= new ArrayList<Movimiento>();
@@ -73,10 +73,40 @@ public class main  extends JFrame{
         }    
         return Pokemones;
     }
+    public static ArrayList<Entrenador> readEntrenadores(ArrayList<Pokemon> Pokemones) throws FileNotFoundException, IOException{
+        BufferedReader br = new BufferedReader(new FileReader("Entrenadores.txt"));
+        ArrayList<ArrayList<Pokemon>> Equipo= new ArrayList<ArrayList<Pokemon>>();
+        ArrayList<Entrenador> Entrenadores= new ArrayList<Entrenador>();
+        try {
+            
+            String line = br.readLine();
+            String[] datos;
+            while (line != null) {
+                datos = line.split(",");
+                int wins = Integer.parseInt(datos[2]);
+                int loses = Integer.parseInt(datos[3]);
+                ArrayList<Pokemon> PokeEquipo= new ArrayList<Pokemon>();
+                for(int i=4;i<datos.length;i++){
+                    for(int j=0;j<Pokemones.size();j++){
+                        if(datos[i].equals(Pokemones.get(j).getNombre())){
+                            PokeEquipo.add(Pokemones.get(j));
+                        }
+                    }
+                }
+                Entrenadores.add(new Entrenador(datos[0],datos[1],wins,loses,PokeEquipo));
+                line = br.readLine();
+            }
+        } finally {
+            br.close();
+        }
+        return Entrenadores;
+    }
+    
     public static void main(String[] args) throws IOException {
        
         ArrayList<Pokemon> Pokemones = read();
-        Seleccion frame = new Seleccion(Pokemones);
-        frame.Pintar();          
+        ArrayList<Entrenador> Entrenadores=readEntrenadores(Pokemones);
+        SelecEntrenadores frame = new SelecEntrenadores(Entrenadores);
+        frame.PintarEntrenadores();          
     }
 }
